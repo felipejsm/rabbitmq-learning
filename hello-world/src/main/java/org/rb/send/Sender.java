@@ -1,4 +1,4 @@
-package org.rabbit.send;
+package org.rb.send;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
@@ -14,7 +14,7 @@ public class Sender {
         try(Connection connection = connectionFactory.newConnection()) {
             Channel channel = connection.createChannel();
             channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-            channel.basicPublish("","hello-route",null,message.getBytes());
+            channel.basicPublish("",QUEUE_NAME,null,message.getBytes());
             System.out.println("[x] Sending message - ".concat(message));
         }
     }
