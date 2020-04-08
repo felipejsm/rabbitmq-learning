@@ -14,15 +14,15 @@ public class Worker {
 		
 	}
 	
-	private void consume() {
+	private void consume() throws Exception {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		connectionFactory.setHost("localhost");
 		
 		Connection connection = connectionFactory.newConnection();
 		Channel channel = connection.createChannel();
 		
-		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-		
+		channel.queueDeclare(TASK_QUEUE_NAME, false, false, false, null);
+		System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			try {
 				String message = new String(delivery.getBody(), "UTF-8");

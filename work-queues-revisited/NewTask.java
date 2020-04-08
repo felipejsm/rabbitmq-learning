@@ -6,7 +6,7 @@ public class NewTask {
 	private final static String QUEUE_NAME = "hello";
 	public static void main(String[] args) {
 		try {
-			String message = String.join(" ", argv);
+			String message = String.join(" ", args);
 			new NewTask().send(message);
 		} catch(Exception e) {}
 	}
