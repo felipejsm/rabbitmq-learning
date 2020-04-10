@@ -6,7 +6,7 @@ public class EmitLog {
 
 	private static final String EXCHANGE_NAME = "logs";
 	
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws Exception {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		connectionFactory.setHost("localhost");
 		try(Connection connection = connectionFactory.newConnection();Channel channel = connection.createChannel()) {
