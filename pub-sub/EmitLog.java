@@ -13,7 +13,7 @@ public class EmitLog {
 			channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 			String message = argv.length < 1 ? "info: Hello World!" :
                             String.join(" ", argv);
-			channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes();
+			channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes());
 		}
 	}
 

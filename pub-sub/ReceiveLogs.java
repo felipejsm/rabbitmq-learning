@@ -1,7 +1,7 @@
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.DeliverCallback;
+import com.rabbitmq.client.DeliverCallback;
 
 public class ReceiveLogs {
 	private static final String EXCHANGE_NAME = "logs";
@@ -18,7 +18,7 @@ public class ReceiveLogs {
 		System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 		
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-			String message = new String(delivery.getBody, "UTF-8");
+			String message = new String(delivery.getBody(), "UTF-8");
 			System.out.println(" [x] Received '" + message + "'");
 		};
 		
