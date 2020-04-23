@@ -8,18 +8,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 public class Tut1Sender {
 
+    @Autowired
     private RabbitTemplate template;
+
+    @Autowired
     private Queue queue;
-
-    @Autowired
-    public void setQueue(Queue queue) {
-        this.queue = queue;
-    }
-
-    @Autowired
-    public void setRabbitTemplate(RabbitTemplate template) {
-        this.template = template;
-    }
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send() {
